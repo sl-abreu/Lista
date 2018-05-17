@@ -17,24 +17,32 @@ public class ListaOrdenada<T extends Comparable<T>> extends Lista<T> implements 
     }
     
     @Override
-    public void add(T dato){
+    public boolean add(T dato){
+        boolean res=false;
+        
         if(dato!=null){
             Node<T> nuev=new Node(dato);
             
-            if(start==null)
+            if(start==null){
                 start=nuev;
-            else if(start.getDato().compareTo(dato)>0){
+                res=true;
+            }else if(start.getDato().compareTo(dato)>0){
                 nuev.setLink(start);
                 start=nuev;
+                res=true;
             }else{
                 Node<T> ap=start;
                 
-                while(ap.getLink()!=null && ap.getLink().getDato().compareTo(dato)<=0)
+                while(ap.getLink()!=null && ap.getLink().getDato().compareTo(dato)<0)
                     ap=ap.getLink();
-                nuev.setLink(ap.getLink());
-                ap.setLink(ap);
+                if(ap.getLink()!=null && !ap.getLink().getDato().equals(dato)){
+                    nuev.setLink(ap.getLink());
+                    ap.setLink(ap);
+                    res=true;
+                }
             }
         }
+        return res;
     }
     @Override
     public T remove(T dato){

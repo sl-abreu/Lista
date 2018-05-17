@@ -6,13 +6,14 @@
 package listaDobleEnlazada;
 
 import auxiliares.DNode;
+import lista.ListaDesordenadaADT;
 
 /**
  *
  * @author robot
  */
-public class ListaDesordenada<T> extends Lista<T> implements ListaDesordenadaADT<T> {
-    public ListaDesordenada(){
+public class ListaDesordenadaD<T> extends ListaD<T> implements ListaDesordenadaADT<T> {
+    public ListaDesordenadaD(){
         super();
     }
     

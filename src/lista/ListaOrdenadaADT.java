@@ -10,5 +10,5 @@ package lista;
  * @author robot
  */
 public interface ListaOrdenadaADT<T extends Comparable<T>> extends ListaADT<T> {
-    public void add(T datum);
+    public boolean add(T datum);
 }

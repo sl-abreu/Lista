@@ -7,13 +7,14 @@ package listaDobleEnlazada;
 
 import auxiliares.DNode;
 import java.util.Iterator;
+import lista.ListaOrdenadaADT;
 
 /**
  *
  * @author robot
  */
-public class ListaOrdenada<T extends Comparable<T>> extends Lista<T> implements ListaOrdenadaADT<T> {
-    public ListaOrdenada(){
+public class ListaOrdenadaD<T extends Comparable<T>> extends ListaD<T> implements ListaOrdenadaADT<T> {
+    public ListaOrdenadaD(){
         super();
     }
     

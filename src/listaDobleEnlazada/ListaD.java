@@ -8,16 +8,17 @@ package listaDobleEnlazada;
 import auxiliares.DNode;
 import auxiliares.IteratorDEE;
 import java.util.Iterator;
+import lista.ListaADT;
 
 /**
  *
  * @author robot
  */
-public abstract class Lista<T> implements ListaADT<T> {
+public abstract class ListaD<T> implements ListaADT<T> {
     protected DNode<T> start;
     protected DNode<T> end;
     
-    public Lista(){
+    public ListaD(){
         start=null;
         end=null;
     }
