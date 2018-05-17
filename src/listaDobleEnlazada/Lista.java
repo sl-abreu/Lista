@@ -104,14 +104,23 @@ public abstract class Lista<T> implements ListaADT<T> {
     }
     @Override
     public String toString(){
-        StringBuilder cad=new StringBuilder();
-        DNode<T> ap=start;
+        String res="";
         
-        while(ap!=null){
-            cad.append(ap.getDato().toString());
-            ap=ap.getNext();
+        if(start!=null){
+            StringBuilder cad=new StringBuilder();
+            DNode<T> ap=start.getNext();
+            
+            cad.append(start.getDato().toString());
+            toString(ap,cad);
+            res=cad.toString();
         }
-        return cad.toString();
+        return res;
+    }
+    private void toString(DNode<T> ap,StringBuilder cad){
+        if(ap!=null){
+            cad.append(ap.getDato().toString());
+            toString(ap.getNext(),cad);
+        }
     }
     @Override
     public boolean contains(T dato){
