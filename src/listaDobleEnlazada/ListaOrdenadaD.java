@@ -7,6 +7,7 @@ package listaDobleEnlazada;
 
 import auxiliares.DNode;
 import java.util.Iterator;
+import lista.ListaADT;
 import lista.ListaOrdenadaADT;
 
 /**
@@ -96,5 +97,30 @@ public class ListaOrdenadaD<T extends Comparable<T>> extends ListaD<T> implement
         else if(temp.compareTo(dato)<0)
             return contains(dato,it);
         return false;
+    }
+
+    @Override
+    public boolean equals(Object otra) {
+        if(this==otra)
+            return true;
+        if(otra instanceof ListaADT){
+            if(this.isEmpty() && ((ListaADT) otra).isEmpty())
+                return true;
+            if(this.isEmpty() || ((ListaADT) otra).isEmpty())
+                return false;
+            Iterator<T> it=((ListaADT) otra).iterator();
+            DNode<T> ap=start;
+            
+            return equals(ap,it);
+        }
+        return false;
+    }
+    private boolean equals(DNode<T> ap,Iterator<T> it){
+        if(it.hasNext() && ap!=null){
+            if(ap.getDato().equals(it.next()))
+                return equals(ap.getNext(),it);
+            return false;
+        }
+        return !it.hasNext() && ap==null;
     }
 }
